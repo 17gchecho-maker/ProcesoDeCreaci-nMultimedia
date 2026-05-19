@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #301232;
+}
+
+nav {
+    background-color: #301232;
+}
+
+aside {
+    background-color: #301232;
+}
+
+section {
+    background-color: #344A35;
+}
