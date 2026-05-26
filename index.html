@@ -6,11 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Proceso de Creacion de Multimedia</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
     <link href="index.css" rel="stylesheet">
+
+    <style>
+
+        /* BOTON + QR */
+        .floating-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* BOTON WEB */
+        .pagina-btn a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 130px;
+            height: 45px;
+
+            background: white;
+            color: black;
+
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+
+            border-radius: 30px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+            transition: 0.3s;
+        }
+
+        .pagina-btn a:hover {
+            background: #301232;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* QR */
+        .qr-image {
+            width: 120px;
+            border-radius: 15px;
+            cursor: pointer;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+            transition: 0.3s;
+        }
+
+        .qr-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* MODAL QR */
+        .qr-modal {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.85);
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 2000;
+        }
+
+        .qr-modal.active {
+            display: flex;
+        }
+
+        .qr-big-image {
+            width: 350px;
+            max-width: 90%;
+            border-radius: 20px;
+        }
+
+        .close-qr {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+
+            color: white;
+            font-size: 40px;
+
+            cursor: pointer;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -20,7 +117,7 @@
         <!-- HEADER -->
         <div class="row g-0">
 
-            <header class="col-12 p-4 text-white text-center shadow-sm z-3 position-relative">
+            <header class="col-12 p-4 text-white text-center shadow-sm">
 
                 <h1 class="fs-2 m-0 fw-bold">
                     Proceso de Creacion de Multimedia
@@ -33,64 +130,63 @@
         <div class="row g-0">
 
             <!-- MENU IZQUIERDO -->
-            <nav class="col-12 col-md-3 col-lg-2 p-4 pt-5 shadow-sm z-2">
+            <nav class="col-12 col-md-3 col-lg-2 p-4 pt-5 shadow-sm">
 
                 <div class="sticky-md-top" style="top: 2rem;">
 
-                    <ul
-                        class="list-unstyled d-flex flex-row flex-md-column flex-wrap gap-2 justify-content-center m-0">
+                    <ul class="list-unstyled d-flex flex-row flex-md-column flex-wrap gap-2 justify-content-center m-0">
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#investigacion">
                                 Investigación
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#brief">
                                 Brief
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#concepto_grafico">
                                 Concepto gráfico
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#Idea">
                                 Idea
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#Sketch">
                                 Sketch
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#Wireframe">
                                 Wireframe
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#Mockup">
                                 Mockup
                             </a>
                         </li>
 
                         <li class="flex-grow-1">
-                            <a class="btn btn-light w-100 fw-semibold text-center"
+                            <a class="btn btn-light w-100 fw-semibold"
                                 href="#Prototipo">
                                 Prototipo
                             </a>
@@ -103,51 +199,31 @@
             </nav>
 
             <!-- CONTENIDO -->
-            <section class="col-12 col-md-9 col-lg-7 p-4 p-lg-5 z-1">
+            <section class="col-12 col-md-9 col-lg-7 p-4 p-lg-5">
 
                 <div class="d-flex flex-column gap-5">
 
                     <!-- INVESTIGACION -->
-                    <div class="pdf-viewer shadow-sm border rounded w-100" id="investigacion">
+                    <div class="pdf-viewer shadow-sm border rounded w-100"
+                        id="investigacion">
 
-                        <object data="10paginasweb.pdf" type="application/pdf">
-
-                            <p class="text-white p-3">
-
-                                Tu navegador no puede mostrar este PDF.
-
-                                <a href="10paginasweb.pdf"
-                                    target="_blank"
-                                    rel="noopener">
-
-                                    Abrir PDF
-
-                                </a>
-
-                            </p>
+                        <object data="10paginasweb.pdf"
+                            type="application/pdf"
+                            width="100%"
+                            height="700px">
 
                         </object>
 
                     </div>
 
                     <!-- BRIEF -->
-                    <div class="pdf-viewer shadow-sm border rounded w-100" id="brief">
+                    <div class="pdf-viewer shadow-sm border rounded w-100"
+                        id="brief">
 
-                        <object data="brief%20personal%20CHECHO.pdf" type="application/pdf">
-
-                            <p class="text-white p-3">
-
-                                Tu navegador no puede mostrar este PDF.
-
-                                <a href="brief%20personal%20CHECHO.pdf"
-                                    target="_blank"
-                                    rel="noopener">
-
-                                    Abrir PDF
-
-                                </a>
-
-                            </p>
+                        <object data="brief%20personal%20CHECHO.pdf"
+                            type="application/pdf"
+                            width="100%"
+                            height="700px">
 
                         </object>
 
@@ -156,15 +232,11 @@
                     <!-- VIDEO -->
                     <div id="concepto_grafico">
 
-                        <video
-                            class="shadow-sm border rounded w-100"
-                            width="100%"
-                            height="800px"
+                        <video class="shadow-sm border rounded w-100"
                             controls>
 
-                            <source src="Video Portafolio.mp4" type="video/mp4">
-
-                            Tu navegador no soporta video.
+                            <source src="Video Portafolio.mp4"
+                                type="video/mp4">
 
                         </video>
 
@@ -172,83 +244,51 @@
 
                     <!-- AUDIO -->
                     <div id="Idea"
-                        class="audio-container shadow-sm border rounded w-100 p-4">
+                        class="shadow-sm border rounded p-4">
 
                         <audio controls class="w-100">
 
                             <source src="Explicación proceso.mp3"
                                 type="audio/mpeg">
 
-                            Tu navegador no soporta audio.
-
                         </audio>
 
                     </div>
 
                     <!-- SKETCH -->
-                    <div class="pdf-viewer shadow-sm border rounded w-100" id="Sketch">
+                    <div class="pdf-viewer shadow-sm border rounded w-100"
+                        id="Sketch">
 
-                        <object data="Sketch.pdf" type="application/pdf">
-
-                            <p class="text-white p-3">
-
-                                Tu navegador no puede mostrar este PDF.
-
-                                <a href="Sketch.pdf"
-                                    target="_blank"
-                                    rel="noopener">
-
-                                    Abrir PDF
-
-                                </a>
-
-                            </p>
+                        <object data="Sketch.pdf"
+                            type="application/pdf"
+                            width="100%"
+                            height="700px">
 
                         </object>
 
                     </div>
 
                     <!-- WIREFRAME -->
-                    <div class="pdf-viewer shadow-sm border rounded w-100" id="Wireframe">
+                    <div class="pdf-viewer shadow-sm border rounded w-100"
+                        id="Wireframe">
 
-                        <object data="Mockup.pdf" type="application/pdf">
-
-                            <p class="text-white p-3">
-
-                                Tu navegador no puede mostrar este PDF.
-
-                                <a href="Mockup.pdf"
-                                    target="_blank"
-                                    rel="noopener">
-
-                                    Abrir PDF
-
-                                </a>
-
-                            </p>
+                        <object data="Mockup.pdf"
+                            type="application/pdf"
+                            width="100%"
+                            height="700px">
 
                         </object>
 
                     </div>
 
                     <!-- MOCKUP -->
-                    <div class="pdf-viewer shadow-sm border rounded w-100" id="Mockup">
+                    <div class="pdf-viewer shadow-sm border rounded w-100"
+                        id="Mockup">
 
-                        <object data="Portafolio.pdf" type="application/pdf">
-
-                            <p class="text-white p-3">
-
-                                Tu navegador no puede mostrar este PDF.
-
-                                <a href="Portafolio.pdf"
-                                    target="_blank"
-                                    rel="noopener">
-
-                                    Abrir PDF
-
-                                </a>
-
-                            </p>
+                        <object data="Portafolio.pdf"
+                            type="application/pdf"
+                            width="100%"
+                            height="700px">
 
                         </object>
 
@@ -256,11 +296,11 @@
 
                     <!-- PROTOTIPO -->
                     <div id="Prototipo"
-                        class="prototype-container shadow-sm border rounded overflow-hidden">
+                        class="shadow-sm border rounded overflow-hidden">
 
                         <img src="paginaweb.png"
                             alt="Prototipo"
-                            class="prototype-image">
+                            class="w-100">
 
                     </div>
 
@@ -269,70 +309,33 @@
             </section>
 
             <!-- LATERAL DERECHO -->
-            <aside class="col-12 col-lg-3 p-4 pt-5 text-white shadow-sm z-0">
+            <aside class="col-12 col-lg-3 p-4 pt-5 text-white shadow-sm">
 
                 <div class="sticky-lg-top" style="top: 2rem;">
 
-                    <ul
-                        class="list-unstyled d-flex flex-row flex-lg-column flex-wrap gap-3 justify-content-center m-0">
+                    <ul class="list-unstyled d-flex flex-row flex-lg-column flex-wrap gap-3 justify-content-center m-0">
 
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
+                        <li>
+                            <h3 class="fs-6 bg-dark bg-opacity-25 p-2 rounded">
                                 Exploración Visual
                             </h3>
                         </li>
 
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
+                        <li>
+                            <h3 class="fs-6 bg-dark bg-opacity-25 p-2 rounded">
                                 Recolección de información
                             </h3>
                         </li>
 
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Planteamiento de la idea
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
+                        <li>
+                            <h3 class="fs-6 bg-dark bg-opacity-25 p-2 rounded">
                                 Concepto gráfico creativo
                             </h3>
                         </li>
 
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
+                        <li>
+                            <h3 class="fs-6 bg-dark bg-opacity-25 p-2 rounded">
                                 Producto final
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Fase de pre-producción
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Fase de producción
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Fase de post-producción
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Fase de prototipado
-                            </h3>
-                        </li>
-
-                        <li class="flex-grow-1">
-                            <h3 class="fs-6 m-0 text-center text-lg-start bg-dark bg-opacity-25 p-2 rounded">
-                                Proyecto terminado
                             </h3>
                         </li>
 
@@ -346,21 +349,41 @@
 
     </div>
 
-    <!-- QR -->
-    <div class="qr-container">
+    <!-- BOTON + QR -->
+    <div class="floating-container">
 
-        <img src="qrcode_17gchecho-maker.github.io.png"
-            alt="QR Pagina Web"
-            class="qr-image"
-            id="qrImage">
+        <!-- BOTON -->
+        <div class="pagina-btn">
+
+            <a href="https://17gchecho-maker.github.io/PaginaWebPortafolio/"
+                target="_blank">
+
+                IR A LA WEB
+
+            </a>
+
+        </div>
+
+        <!-- QR -->
+        <div class="qr-container">
+
+            <img src="qrcode_17gchecho-maker.github.io.png"
+                alt="QR Pagina Web"
+                class="qr-image"
+                id="qrImage">
+
+        </div>
 
     </div>
 
     <!-- MODAL QR -->
     <div class="qr-modal" id="qrModal">
 
-        <span class="close-qr" id="closeQr">
+        <span class="close-qr"
+            id="closeQr">
+
             ✕
+
         </span>
 
         <img src="qrcode_17gchecho-maker.github.io.png"
@@ -395,9 +418,8 @@
     </script>
 
     <!-- BOOTSTRAP -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+
     </script>
 
 </body>
