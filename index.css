@@ -20,6 +20,10 @@ section {
     background-color: #344A35;
 }
 
+/* ========================= */
+/* PDF */
+/* ========================= */
+
 .pdf-viewer {
     width: 100%;
     min-height: 70vh;
@@ -35,8 +39,199 @@ section {
     border: none;
 }
 
+/* ========================= */
+/* VIDEO */
+/* ========================= */
+
+video {
+    width: 100%;
+    min-height: 70vh;
+    object-fit: cover;
+    background-color: black;
+}
+
+/* ========================= */
+/* AUDIO */
+/* ========================= */
+
+.audio-container {
+    background-color: #1f2d20;
+    min-height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-container audio {
+    width: 100%;
+}
+
+/* ========================= */
+/* PROTOTIPO IMAGEN */
+/* ========================= */
+
+.prototype-container {
+    width: 100%;
+    background-color: #1f2d20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 70vh;
+
+    padding: 20px;
+}
+
+.prototype-image {
+    width: 100%;
+    max-width: 1200px;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+}
+
+/* ========================= */
+/* QR */
+/* ========================= */
+
+.qr-container {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 9999;
+}
+
+.qr-image {
+    width: 120px;
+    height: 120px;
+
+    object-fit: cover;
+
+    cursor: pointer;
+
+    border-radius: 18px;
+
+    border: 8px solid #2f4f34;
+
+    background-color: white;
+
+    transition: all 0.3s ease;
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.qr-image:hover {
+    transform: scale(1.08);
+}
+
+/* ========================= */
+/* MODAL QR */
+/* ========================= */
+
+.qr-modal {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.92);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.3s ease;
+
+    z-index: 10000;
+}
+
+.qr-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.qr-big-image {
+    width: 80%;
+    max-width: 700px;
+
+    border-radius: 25px;
+
+    border: 14px solid #2f4f34;
+
+    background-color: white;
+
+    animation: zoomQr 0.3s ease;
+}
+
+@keyframes zoomQr {
+
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+.close-qr {
+    position: absolute;
+
+    top: 30px;
+    right: 40px;
+
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.close-qr:hover {
+    transform: scale(1.15);
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
 @media (max-width: 768px) {
+
     .pdf-viewer {
         min-height: 55vh;
     }
+
+    video {
+        min-height: 45vh;
+    }
+
+    .prototype-container {
+        min-height: 45vh;
+    }
+
+    .qr-image {
+        width: 85px;
+        height: 85px;
+
+        border-width: 6px;
+    }
+
+    .qr-big-image {
+        width: 92%;
+    }
+
 }
